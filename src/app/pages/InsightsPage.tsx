@@ -100,7 +100,7 @@ export function InsightsPage() {
               <YAxis dataKey="concept" type="category" width={150} tick={{ fontSize: 13 }} />
               <Tooltip />
               <Bar dataKey="coverage" radius={[0, 8, 8, 0]}>
-                {conceptDistribution.map((entry, index) => (
+                {activeData.conceptDistribution.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={

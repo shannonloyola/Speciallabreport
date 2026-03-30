@@ -60,6 +60,8 @@ function scoreSlideMatch(questionText: string, slideText: string): number {
   const keywordMatchPct = qKw.length ? qKw.filter((w) => slideText.toLowerCase().includes(w)).length / qKw.length : 0;
   if (keywordMatchPct >= 0.7) {
     score = Math.max(score, 0.85);
+  } else if (keywordMatchPct >= 0.5 && overlap >= 0.5 && textSim >= 0.5) {
+    score = Math.max(score, 0.8);
   }
 
   if (slideText.toLowerCase().includes(questionText.toLowerCase().replace(/[^a-z0-9\s]/g, ""))) {
@@ -87,7 +89,7 @@ function getSlideDepth(slideText: string): CognitiveLevel {
 }
 
 function classifyCoverage(score: number): CoverageStatus {
-  if (score >= 0.7) return "Fully Covered";
+  if (score >= 0.65) return "Fully Covered";
   if (score >= 0.4) return "Partially Covered";
   return "Not Covered";
 }

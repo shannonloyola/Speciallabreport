@@ -155,7 +155,7 @@ export function QuestionDetailPage() {
           ) : (
             <div />
           )}
-          {question.id < sampleQuestions.length && (
+          {question.id < source.questions.length && (
             <Link
               to={`/question/${question.id + 1}`}
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
